@@ -1,11 +1,14 @@
 package com.inti.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Utilisateur implements Serializable{
@@ -14,6 +17,8 @@ public class Utilisateur implements Serializable{
 	private Long idUtilisateur;
 	private String nomUtilisateur;
 	private String prenomUtilisateur;
+	@OneToMany(mappedBy = "utilisateur")
+	private Set<Compte> comptes = new HashSet<>();
 	
 	public Utilisateur(String nomUtilisateur, String prenomUtilisateur) {
 		this.nomUtilisateur = nomUtilisateur;
@@ -46,6 +51,14 @@ public class Utilisateur implements Serializable{
 	public String toString() {
 		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", nomUtilisateur=" + nomUtilisateur
 				+ ", prenomUtilisateur=" + prenomUtilisateur + "]";
+	}
+
+	public Set<Compte> getComptes() {
+		return comptes;
+	}
+
+	public void setComptes(Set<Compte> comptes) {
+		this.comptes = comptes;
 	}
 	
 }
