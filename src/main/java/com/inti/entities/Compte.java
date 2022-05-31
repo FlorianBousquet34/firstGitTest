@@ -29,7 +29,14 @@ public class Compte implements Serializable{
 		this.dateCreation = dateCreation;
 		this.solde = solde;
 	}
-
+	
+	
+	
+	public Compte(Date dateCreation, double solde, Utilisateur utilisateur) {
+		this.dateCreation = dateCreation;
+		this.solde = solde;
+		this.utilisateur = utilisateur;
+	}
 
 	public Utilisateur getUtilisateur() {
 		return utilisateur;
